@@ -1,140 +1,200 @@
 {
-  "$schema": "https://frc2713.github.io/QRScout/schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "QRScout",
-  "page_title": "Crescendo",
-  "teamNumber": 2713,
+  "page_title": "REEFSCAPE",
   "delimiter": "\t",
+  "teamNumber": 1403,
+  "theme": {
+    "light": {
+      "background": "0 0% 100%",
+      "foreground": "0 0% 3.9%",
+      "card": "0 0% 100%",
+      "card_foreground": "0 0% 3.9%",
+      "popover": "0 0% 100%",
+      "popover_foreground": "0 0% 3.9%",
+      "primary": "354.44 71.3% 47.9%",
+      "primary_foreground": "0 85.7% 97.3%",
+      "secondary": "0 0% 96.1%",
+      "secondary_foreground": "0 0% 9%",
+      "muted": "0 0% 96.1%",
+      "muted_foreground": "0 0% 45.1%",
+      "accent": "0 0% 96.1%",
+      "accent_foreground": "0 0% 9%",
+      "destructive": "0 84.2% 60.2%",
+      "destructive_foreground": "0 0% 98%",
+      "border": "0 0% 89.8%",
+      "input": "0 0% 89.8%",
+      "ring": "354.44 71.3% 47.9%",
+      "chart_1": "12 76% 61%",
+      "chart_2": "173 58% 39%",
+      "chart_3": "197 37% 24%",
+      "chart_4": "43 74% 66%",
+      "chart_5": "27 87% 67%"
+    },
+    "dark": {
+      "background": "0 0% 3.9%",
+      "foreground": "0 0% 98%",
+      "card": "0 0% 3.9%",
+      "card_foreground": "0 0% 98%",
+      "popover": "0 0% 3.9%",
+      "popover_foreground": "0 0% 98%",
+      "primary": "354.44 71.3% 47.9%",
+      "primary_foreground": "0 85.7% 97.3%",
+      "secondary": "0 0% 14.9%",
+      "secondary_foreground": "0 0% 98%",
+      "muted": "0 0% 14.9%",
+      "muted_foreground": "0 0% 63.9%",
+      "accent": "0 0% 14.9%",
+      "accent_foreground": "0 0% 98%",
+      "destructive": "0 62.8% 30.6%",
+      "destructive_foreground": "0 0% 98%",
+      "border": "0 0% 14.9%",
+      "input": "0 0% 14.9%",
+      "ring": "354.44 71.3% 47.9%",
+      "chart_1": "220 70% 50%",
+      "chart_2": "160 60% 45%",
+      "chart_3": "30 80% 55%",
+      "chart_4": "280 65% 60%",
+      "chart_5": "340 75% 55%"
+    }
+  },
   "sections": [
     {
       "name": "Prematch",
       "preserveDataOnReset": true,
       "fields": [
         {
-          "title": "Scouter Initials",
-          "description": "Enter the initials of the scouter.",
+          "code": "name",
+          "title": "Name",
           "type": "text",
-          "required": true,
-          "code": "scouter"
+          "min": 0,
+          "max": 20,
+          "required": false
         },
         {
           "title": "Match Number",
-          "description": "Enter the match number.",
           "type": "number",
           "required": true,
-          "code": "matchNumber",
-          "autoIncrementOnReset": true,
-          "defaultValue": 1
+          "code": "matchNumber"
         },
         {
-          "title": "Robot",
-          "description": "The robot you are scouting this match, based on driver station position.",
+          "title": "Scouting Position",
           "type": "select",
-          "required": true,
-          "code": "robot",
+          "required": false,
+          "code": "starting",
           "choices": {
-            "R1": "Red 1",
-            "R2": "Red 2",
-            "R3": "Red 3",
-            "B1": "Blue 1",
-            "B2": "Blue 2",
-            "B3": "Blue 3"
-          },
-          "defaultValue": "R1"
+            "Red 1": "Red 1",
+            "Red 2": "Red 2",
+            "Red 3": "Red 3",
+            "Blue 1": "Blue 1",
+            "Blue 2": "Blue 2",
+            "Blue 3": "Blue 3"
+          }
         },
         {
           "title": "Team Number",
-          "description": "The team number of the robot you're scouting.",
           "type": "number",
           "required": true,
-          "code": "teamNumber",
-          "min": 0,
-          "max": 19999
+          "code": "team"
         },
         {
-          "title": "Starting Position",
-          "description": "The starting position of the robot.",
-          "type": "select",
-          "required": true,
-          "code": "Prsp",
-          "choices": {
-            "R1": "Source",
-            "R2": "Middle",
-            "R3": "Amp"
-          },
-          "defaultValue": ""
-        },
-        {
-          "title": "No Show",
-          "description": "Check if the robot did not show up for the match.",
+          "title": "Showed Up",
           "type": "boolean",
-          "defaultValue": false,
-          "required": false,
-          "code": "noShow"
+          "required": true,
+          "code": "show"
         }
       ]
     },
     {
       "name": "Autonomous",
+      "preserveDataOnReset": false,
       "fields": [
         {
-          "title": "Moved?",
-          "description": "Check if the robot moved during autonomous.",
-          "type": "boolean",
-          "defaultValue": false,
-          "required": false,
-          "code": "Mved"
-        },
-        {
-          "code": "timer",
-          "title": "Timer",
-          "description": "The time it took for the robot to finish autonomous.",
-          "type": "timer",
-          "defaultValue": 0,
-          "required": false
-        },
-        {
-          "code": "ausc",
-          "title": "Speaker Scored",
-          "description": "The number of speaker shots scored during autonomous.",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
-          "code": "auskpm",
-          "title": "Speaker Missed",
-          "description": "The number of speaker shots missed during autonomous.",
-          "type": "counter",
-          "defaultValue": 0,
-          "min": 0,
-          "required": false
-        },
-        {
-          "code": "a_gp_Path",
-          "title": "Auto Game Piece Path",
+          "title": "Starting side",
           "type": "select",
-          "multiSelect": true,
+          "required": false,
+          "code": "starting",
           "choices": {
-            "1": "Speaker 3 (Source Side)",
-            "2": "Speaker 2 (Middle)",
-            "3": "Speaker 1 (Amp Side)",
-            "4": "Midline 5 (Source Edge)",
-            "5": "Midline 4",
-            "6": "Midline 3 (Middle)",
-            "7": "Midline 2",
-            "8": "Midline 1 (Amp Edge)"
+            "Far Side": "Far Side",
+            "Center": "Center",
+            "Top Side": "Top Side"
           },
-          "defaultValue": "",
-          "required": false
+          "defaultValue": "1"
         },
         {
-          "code": "auf",
-          "title": "Auto Foul",
+          "title": "Mobility",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": false,
+          "code": "mobility"
+        },
+        {
+          "title": "L1",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
-          "required": false
+          "max": 99999,
+          "required": true,
+          "code": "l1A"
+        },
+        {
+          "title": "L2",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "l2A"
+        },
+        {
+          "title": "L3",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "l3A"
+        },
+        {
+          "title": "L4",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "l4A"
+        },
+        {
+          "title": "Algae Processor",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "alPA"
+        },
+        {
+          "title": "Algae Net",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "alNA"
+        },
+        {
+          "title": "Missed Coral",
+          "type": "counter",
+          "defaultValue": 0,
+          "required": false,
+          "code": "failedCA"
+        },
+        {
+          "title": "Missed Algae (Net)",
+          "type": "counter",
+          "defaultValue": 0,
+          "required": false,
+          "code": "failedAA"
         }
       ]
     },
@@ -142,40 +202,69 @@
       "name": "Teleop",
       "fields": [
         {
-          "code": "tamps",
-          "title": "Amp Scored",
+          "title": "L1",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
-          "required": false
+          "max": 99999,
+          "required": true,
+          "code": "l1T"
         },
         {
-          "code": "tsc",
-          "title": "Speaker Scored",
+          "title": "L2",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
-          "required": false
+          "max": 99999,
+          "required": true,
+          "code": "l2T"
         },
         {
-          "code": "tfs",
-          "title": "Feeder Shots",
+          "title": "L3",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
-          "required": false
+          "max": 99999,
+          "required": true,
+          "code": "l3T"
         },
         {
-          "code": "cn",
-          "title": "Note in Trap?",
+          "title": "L4",
           "type": "counter",
           "defaultValue": 0,
           "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "l4T"
+        },
+        {
+          "title": "Algae Processor",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "alPT"
+        },
+        {
+          "title": "Algae Net",
+          "type": "counter",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 99999,
+          "required": true,
+          "code": "alNT"
+        },
+        {
+          "code": "missedC",
+          "title": "Missed Coral",
+          "type": "counter",
+          "defaultValue": 0,
           "required": false
         },
         {
-          "code": "Fou/Tech",
-          "title": "Teleop Foul",
+          "code": "missedA",
+          "title": "Missed Algae (Net)",
           "type": "counter",
           "defaultValue": 0,
           "required": false
@@ -186,18 +275,25 @@
       "name": "Endgame",
       "fields": [
         {
-          "title": "End Position",
-          "type": "select",
-          "required": true,
-          "code": "epo",
-          "choices": {
-            "No": "No Climb",
-            "P": "Parked",
-            "Os": "Onstage",
-            "Hm": "Harmony",
-            "Fh": "Failed Harmony"
-          },
-          "defaultValue": "No"
+          "code": "Deep Cage",
+          "title": "Deep Cage",
+          "type": "boolean",
+          "defaultValue": false,
+          "required": false
+        },
+        {
+          "code": "Shallow Cage",
+          "title": "Shallow Cage",
+          "type": "boolean",
+          "defaultValue": false,
+          "required": false
+        },
+        {
+          "code": "Park",
+          "title": "Park",
+          "type": "boolean",
+          "defaultValue": false,
+          "required": false
         }
       ]
     },
@@ -205,52 +301,11 @@
       "name": "Postmatch",
       "fields": [
         {
-          "code": "or",
-          "title": "Offense Skill",
-          "type": "range",
-          "defaultValue": 3,
-          "min": 1,
-          "max": 5,
-          "required": false
-        },
-        {
-          "code": "dr",
-          "title": "Defense Skill",
-          "type": "select",
-          "choices": {
-            "1": "Not Effective",
-            "2": "Average",
-            "3": "Very Effective",
-            "x": "Not Observed"
-          },
-          "defaultValue": "x",
-          "required": false
-        },
-        {
-          "code": "dto",
-          "title": "Died/Tipped Over",
-          "type": "boolean",
-          "defaultValue": false,
-          "required": false
-        },
-        {
-          "code": "yc",
-          "title": "Yellow/Red Card",
-          "type": "select",
-          "defaultValue": "No Card",
-          "required": true,
-          "choices": {
-            "No Card": "No Card",
-            "Yellow": "Yellow Card",
-            "Red": "Red Card"
-          }
-        },
-        {
-          "code": "co",
+          "code": "comments",
           "title": "Comments",
           "type": "text",
           "min": 0,
-          "max": 50,
+          "max": 99999,
           "required": false
         }
       ]
