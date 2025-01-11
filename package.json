@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "homepage": "https://mllsri.github.io/mllsri.github.io",
+  "homepage": "https://mllsri.github.io/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
